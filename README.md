@@ -301,12 +301,13 @@ export default App;
 详情参见 https://www.cnblogs.com/clearyang/p/6899639.html
 
 * 这里简单举个例子
-jsx遇到<，就当作HTML解析，遇到{就当JavaScript解析.
+* jsx遇到<，就当作HTML解析，遇到{就当JavaScript解析.
 
-比如我们写一段JSX语法
+* 比如我们写一段JSX语法
 
-    <h1>{1+2}</h1>
+  *  <h1>{1+2}</h1>
 
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622094428181.png)
 * 可以看到，除了h1的语义，js表达式也被识别了
 
@@ -326,7 +327,9 @@ onClick = {this.fun.bind(this)}
 ```
 
 * 如果写行内样式用双花括号`{{}}` `  <p style={{color:"red"}}>hello</p>`
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622095901130.png)
+***
 *  jsx中不允许label标签使用for属性，需用htmlFor代替
 * jsx中所有的标签都必须闭合，`<br>`不行,必须`<br/>`
 * jsx中注释比较讲究，` {/*JSX 中的注释方式*/}`,单行也可以
@@ -337,9 +340,13 @@ onClick = {this.fun.bind(this)}
 }
 ```
 * jsx语法中最外层必须有一个包裹元素，这样不行
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622095241342.png)
+***
 * 如果不想加一个额外元素，可以用Fragment官方提供的占位符
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622095500728.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622095440861.png)
 ### jsx中使用三元运算符
 
@@ -388,6 +395,7 @@ export default TodoList;
 ```
 * 样式不是重点，最后会美化一下，先凑合着看
 * 注意最外层包裹元素的事
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622102941108.png)
 ***
 
@@ -398,6 +406,7 @@ export default TodoList;
 
 ### 响应式设计
 * react中文文档有这样一段话
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622120651916.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
 ***
 > 核心就是以数据驱动视图的改变。react并不建议你直接操作DOM元素,而是要通过数据进行驱动，改变界面中的效果。数据变了，视图就变了。mvvm框架都是如此，包括vue，也是数据驱动的形式改变视图。这对于开发者而言十分友好，只需要关注数据本身，大大提升了开发效率。
@@ -414,7 +423,7 @@ export default TodoList;
 
 ### 数据绑定
 * 需求：添加事务todo-item
-`思考： 上边说了响应式数据， 数据不能写死，要动态绑定数据。那么在哪里绑定呢？`
+* `思考： 上边说了响应式数据， 数据不能写死，要动态绑定数据。那么在哪里绑定呢？`
 * 答案是：**写在构造函数里**
 * 类在被加载的时候，构造函数就会被执行，不需要手动调用
 
@@ -431,15 +440,16 @@ export default TodoList;
 ```
 `如果你学过vue，这里会更容易理解，在数据绑定这一块，vue和react差不多`
 
-绑定语法很简单，就一句话：
+* 绑定语法很简单，就一句话：
 
 ```html
 <input value={this.state.inputValue} type="text" /> 
 ```
 * 这个时候，你可以试着改变构造函数中inputValue的值，你会发现，页面数据立刻变了。
 * 此时，并不是完全没有毛毛问题的，打开控制台，你会发现这样有一个警告
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622123219745.png)
+***
 * 提示你在没有onChange事件处理函数的情况下为表单控件设置了value属性，这将呈现只读字段。如果字段应该是可变的，使用“defaultvalue”。否则，设置“onchange”或“readonly”。
 * 说了一大堆，加个onChange事件处理函数就行了
 
@@ -484,7 +494,9 @@ onChange={this.changeInputValue.bind(this)}
 ```
 * 这个时候输入框可以正常输入值且不会报错
 * 补充：这个this绑定也可以像官方文档那样提到构造函数里
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622131244195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 * 也可以不绑定，方法定义时候用箭头函数
 
 ```js
@@ -502,23 +514,30 @@ changeInputValue = (e) => {
 `list: ['学习react','学习vue']`
 
 * 重点来了
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622132004286.png)
+***
 * map是es6的方法，不太懂的自行补学
  **踩坑点**
 * li标签的取值item不加花括号{}，报错，注意，{}是jsx语法环境，不加不识别
 * 遍历的子元素没有key值，什么叫没有key值，就是上边那样
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062213232742.png)
+***
 * 在这里可以先用索引代替，但并不是个好方法
-`    return <li key={index}>{item}</li>`
+* `    return <li key={index}>{item}</li>`
  
  ### 关于遍历子元素使用索引做key的弊端
 
 > 之前说过，react是基于虚拟dom的，涉及diff算法。先看下下边这个图
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622132758440.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 * 虚拟dom会创建两个js的对象用于前后数据比对，来决定是否更新数据。如上图那样，这两个对象的依赖是靠索引建立的，这样的话，一旦索引发生改变，这个依赖就需要重新建立，白白浪费了时间，有性能问题。建议在数据源上加个id标识作为key，或者使用自身作为key，即a对a，b对b
 
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622133315362.png)
+*** 
 ### 添加事务
 * 折腾半天，下边为按钮添加事件处理函数，方法和之前一样
 ```html
@@ -536,8 +555,9 @@ changeInputValue = (e) => {
 ***
 ### 键盘监听
 * 下面实现一个敲回车添加的功能
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622134559613.png)
+***
 
 ```js
  enterAdd=(e)=>{
@@ -633,23 +653,33 @@ export default TodoList;
 > 这里介绍一款好用的vscode插件。俗话说，磨刀不误砍柴工，刀快才好用，开发也是这个道理，有优秀的编辑器，优秀的插件，没理由不用啊。
 
 ### 插件推荐
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062214101888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 * 安装很简单，插件商店一搜就好了，完事点安装
 * 使用看文档，都很清晰
 
-举几个例子
+* 举几个例子
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622141315735.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622141417849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
 
+***
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622141417849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+*** 
 * 具体的自行感受，给我的感觉是6的飞起，越来越喜欢vscode
 
 ### 自定义代码段
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622141644943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 * 你也可以按需要自己搞一搞
 ### 快捷键映射
 * 之前我一直用sublime，快捷键也用习惯了，还好vscode支持快捷键映射
 * 还是刚才那个界面，点击按键映射
-* 下载，完活![在这里插入图片描述](https://img-blog.csdnimg.cn/201906221419217.png)
+* 下载，完活!
+***
+[在这里插入图片描述](https://img-blog.csdnimg.cn/201906221419217.png)
+***
 
  ##  第十一章 组件拆分
 >  上边我们已经实现了todoList的基本功能，但是，都堆在一个文件里，不太好看，需要抽离一下。可以将每一个li抽成一个小组件TodoItem。
@@ -682,24 +712,28 @@ export default TodoItem;
 import TodoItem from "./TodoItem";
 ```
 * 使用
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062214310129.png)
 * 效果图
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622143148317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
-
+***
 * 这里我们改一下最开始的代码，让代码看起来更简洁
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622143252243.png)
 
  **进一步拆分**
+ ***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622143626814.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
 
 ***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622143653851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
-
+***
 * 接下来，重点来了，以上的拆分还不健全，因为数据都在父组件，儿子TodoItem还毛毛都没有呢。
 
 ### 父->子组件传值
 * 最基础的，属性传值就好，像这样
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622144802622.png)
 * 上述的父->子传值就结束了，todo_item是自定义的，保证和儿子接收的名字一样就行
 * 子组件需要用this.props.xxx的形式进行接收，这里就是this.props.todo_item
@@ -720,11 +754,14 @@ import TodoItem from "./TodoItem";
 * 子组件通过调用父组件的方法实现数据回传
 
 父组件--传方法--传索引
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622150811161.png)
 子组件--定义方法--点击执行事件处理函数--本质就是执行父组件的删除方法
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622150933258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
 
 ## 全部代码
+***
 [链接](https://pan.baidu.com/s/14aw3-QaumZQKbUK2jLZyBw) 提取码：x47l 
 * 使用的话先npm i 安装下依赖
 
@@ -768,7 +805,9 @@ import TodoItem from "./TodoItem";
 </html>
 ```
 * 确实能用，但没什么卵用
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622152852663.png)
+***
 ## 第十三章：调试工具react developer tools的使用
 
 ### 简介
@@ -776,16 +815,22 @@ import TodoItem from "./TodoItem";
 
 
 * 这个东西有三种状态，像下图这样，就是与react无关时候的状态。
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062215340941.png)
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622153515191.png)
- 这种说明页面是react相关，且是开发环境，比如我们的myapp
+***
+ * 这种说明页面是react相关，且是开发环境，比如我们的myapp
+ ***
  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622153608424.png)
+ ***
  * 打开知乎，就这样，说明是生产环境的react
 
 ### 使用
 * 给个图，自行体会吧。
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622153818515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
-
+***
 ## 第十四章：PropTypes类型检查
 ### 介绍
 > js是基于面向对象思想的语言，不是真正的面向对象语言，在类型检测上并不完善，这也是typescript大火的原因之一。上述在在父组件向子组件传递数据时，并没有对传递的属性值进行限制，想传什么传什么，自由度太高。这在工作中是完全不允许的，大型项目，缺少必要校验，后期维护极为坑。
@@ -824,14 +869,18 @@ xxx.defaultProps = {
 
 ### 简单使用
 * 设置
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622160438414.png)
 * 使用
 	* 此时，e.target.value就被取代了
 	* 事件参数e也没用了，可以去掉
+	
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622160505640.png)
 ***
-你还可以这样用
-` ref={(input)=>{this.input=input}}`
+* 你还可以这样用
+* ` ref={(input)=>{this.input=input}}`
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622160830358.png)
 * 补充：this.setState()是异步的，如果你想操控dom，可以写在它的回调函数里。
 
@@ -839,8 +888,9 @@ xxx.defaultProps = {
 
 ## 第十六章：生命周期
 * 很重要的东西，先来个图
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622161444469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 ### 简介
 > 生命周期就像一个人出生到死亡的过程，在react中，这些生命周期钩子函数十分有用，很多场合我们都会遇到。此外，值得注意的是，react每个组件都有上述提到的所有周期函数，并不是根组件或父组件才有。严格说，生命周期函数会在组件渲染到销毁这个过程的某一个时刻自动执行，不需要你多费心。但是render特别，所有的生命周期函数react都有默认实现，唯独没有render的实现。也就是说，组件里你可以什么周期函数都不写，构造函数也可以不要，但是不写render不行。
 
@@ -955,6 +1005,7 @@ fetchJsonp('/users.jsonp')
 
 ## 第二十章 redux+antd+react实现todoList
 * [感兴趣的戳这里](https://blog.csdn.net/qq_42813491/article/details/93201947)
-
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622172035806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
+***
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190622172007761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODEzNDkx,size_16,color_FFFFFF,t_70)
